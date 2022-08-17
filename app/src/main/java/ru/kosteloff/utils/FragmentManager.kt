@@ -6,8 +6,12 @@ import androidx.fragment.app.FragmentManager
 import ru.kosteloff.R
 
 object FragmentManager {
+    var currentFragment : Fragment? = null
+
     fun setFragment(newFragment: Fragment, act: AppCompatActivity) {
         val transaction = act.supportFragmentManager.beginTransaction()
         transaction.replace(R.id.placeHolder, newFragment).commit()
+
+        currentFragment = newFragment
     }
 }

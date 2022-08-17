@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="exercise">
-        <item>Разминка,300,razminka.jpg</item>                  <!-- 0 -->
-        <item>Плечи и нагтели,x11,na_plechi_ganteli.jpg</item>  <!-- 1 -->
-        <item>Отжимания от пола,x20,otzimaniya.jpg</item>       <!-- 2 -->
-        <item>Пресс,x30,press.jpg</item>                        <!-- 3 -->
-        <item>Присяд и штанга,x10,prisad_so_stangoi.jpg</item>  <!-- 4 -->
-        <item>Жим лежа и штанга,x10,zhim_lega.jpg</item>        <!-- 5 -->
-        <item>Планка,30,planka.jpg</item>                       <!-- 6 -->
-        <item>Планка,30,planka.jpg</item>                       <!-- 7 -->
-        <item>Бицепс и штанга,x10,na_biceps_stanga.jpg</item>   <!-- 8 -->
+        <item>Разминка|300|razminka.gif</item>                  <!-- 0 -->
+        <item>Плечи и нагтели|x11|na_plechi_ganteli.gif</item>  <!-- 1 -->
+        <item>Отжимания от пола|x20|otzimaniya.gif</item>       <!-- 2 -->
+        <item>Пресс|x30|press.gif</item>                        <!-- 3 -->
+        <item>Присяд и штанга|x10|prisad_so_stangoi.gif</item>  <!-- 4 -->
+        <item>Жим лежа и штанга|x10|zhim_lega.gif</item>        <!-- 5 -->
+        <item>Планка|30|planka.gif</item>                       <!-- 6 -->
+        <item>Планка|30|planka.gif</item>                       <!-- 7 -->
+        <item>Бицепс и штанга|x10|na_biceps_stanga.gif</item>   <!-- 8 -->
     </string-array>
     <string-array name="day_exercise">
         <item>0,1,2,3</item>   <!-- 1 день-->

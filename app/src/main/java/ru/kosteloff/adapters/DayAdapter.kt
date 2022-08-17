@@ -10,20 +10,25 @@ import ru.kosteloff.R
 import ru.kosteloff.data.DayModel
 import ru.kosteloff.databinding.DaysListItemBinding
 
-class DayAdapter : ListAdapter<DayModel, DayAdapter.DayHolder>(Comparator()) {
+class DayAdapter(var listener: Listener) :
+    ListAdapter<DayModel, DayAdapter.DayHolder>(Comparator()) {
 
     class DayHolder(view: View) : RecyclerView.ViewHolder(view) {
         private var binding = DaysListItemBinding.bind(view)
-        fun setData(dayModel: DayModel) {
+
+        fun setData(dayModel: DayModel, listener: Listener) {
 
             val resourceAccessToDay =
                 binding.root.context.getString(R.string.day) + " ${adapterPosition + 1}"
 
             binding.nameInDaysListItem.text = resourceAccessToDay
 
-            val counterExercise = dayModel.exercises.split(",").size.toString()
+            val counterExercise = binding.root.context.getString(R.string.exercises) + " " +
+                    dayModel.exercises.split(",").size.toString()
 
             binding.counterInDaysListItem.text = counterExercise
+
+            itemView.setOnClickListener { listener.onClick(dayModel) }
         }
     }
 
@@ -34,7 +39,7 @@ class DayAdapter : ListAdapter<DayModel, DayAdapter.DayHolder>(Comparator()) {
     }
 
     override fun onBindViewHolder(holder: DayHolder, position: Int) {
-        holder.setData(getItem(position))
+        holder.setData(getItem(position), listener)
     }
 
     class Comparator : DiffUtil.ItemCallback<DayModel>() {
@@ -45,5 +50,9 @@ class DayAdapter : ListAdapter<DayModel, DayAdapter.DayHolder>(Comparator()) {
         override fun areContentsTheSame(oldItem: DayModel, newItem: DayModel): Boolean {
             return oldItem == newItem
         }
+    }
+
+    interface Listener {
+        fun onClick(dayModel: DayModel)
     }
 }

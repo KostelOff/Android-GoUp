@@ -7,6 +7,14 @@
     tools:context=".fragments.DaysFragment"
     >
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+
+
+        android:src="@drawable/fon_black_and_red" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_days"
         android:layout_width="0dp"
