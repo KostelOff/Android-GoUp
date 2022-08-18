@@ -7,20 +7,37 @@
     tools:context=".fragments.ExercisesListFragment">
 
     <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fon_only_black"
         android:scaleType="centerCrop"
-        />
+        android:src="@drawable/fon_only_black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_in_fragment_exercises_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="@color/black_light_50"
+        android:fontFamily="@font/nosifer"
+        android:text="@string/start"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_in_fragment_exercises_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
