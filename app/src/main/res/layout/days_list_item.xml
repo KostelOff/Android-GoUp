@@ -29,16 +29,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:fontFamily="@font/black_ops_one"
                 android:text="name_in_days_list_item"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:layout_marginStart="4dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/counter_in_days_list_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/black_ops_one"
                 android:text="counter_in_days_list_item"
+                android:textSize="16sp"
+                android:layout_marginStart="4dp"
                 android:textColor="@color/red" />
 
         </LinearLayout>

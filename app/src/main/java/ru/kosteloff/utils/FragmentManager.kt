@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import ru.kosteloff.R
 
 object FragmentManager {
-    var currentFragment : Fragment? = null
+    var currentFragment: Fragment? = null
 
     fun setFragment(newFragment: Fragment, act: AppCompatActivity) {
         val transaction = act.supportFragmentManager.beginTransaction()

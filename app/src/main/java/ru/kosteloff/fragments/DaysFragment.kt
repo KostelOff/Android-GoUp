@@ -1,14 +1,12 @@
 package ru.kosteloff.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import ru.kosteloff.MainActivity
 import ru.kosteloff.R
 import ru.kosteloff.adapters.DayAdapter
 import ru.kosteloff.data.DayModel
@@ -18,9 +16,15 @@ import ru.kosteloff.utils.FragmentManager
 import ru.kosteloff.utils.MainViewModel
 
 class DaysFragment : Fragment(), DayAdapter.Listener {
-
+    private lateinit var dayAdapter: DayAdapter
     private lateinit var binding: FragmentDaysBinding
     private val model: MainViewModel by activityViewModels()
+    private var actionBar: ActionBar? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,23 +36,55 @@ class DaysFragment : Fragment(), DayAdapter.Listener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        model.currentDay = 0
+        actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = getString(R.string.schedule)
         initRecyclerView()
     }
 
-    fun initRecyclerView() {
-        val dayAdapter = DayAdapter(this@DaysFragment)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        return inflater.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_reset) {
+            model.pref?.edit()?.clear()?.apply()
+            dayAdapter.submitList(forEachDaysExercises())
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun initRecyclerView() {
+        dayAdapter = DayAdapter(this@DaysFragment)
         binding.recyclerViewDays.layoutManager = LinearLayoutManager(activity as AppCompatActivity)
         binding.recyclerViewDays.adapter = dayAdapter
         dayAdapter.submitList(forEachDaysExercises())
     }
 
-    fun forEachDaysExercises(): ArrayList<DayModel> {
+    private fun forEachDaysExercises(): ArrayList<DayModel> {
         val list = ArrayList<DayModel>()
+        var restDaysCounter = 0
         resources.getStringArray(R.array.day_exercise).forEach {
-            list.add(DayModel(it, false))
+            model.currentDay++
+            val exercisesCounter = it.split(",").size
+            list.add(DayModel(it, model.getExerciseCount() == exercisesCounter, 0))
         }
+
+        binding.progressBarInFragmentDays.max = list.size
+        list.forEach {
+            if (it.isDone) restDaysCounter++
+        }
+        updateRestDaysUI(list.size - restDaysCounter, list.size)
         return list
     }
+
+    private fun updateRestDaysUI(restDays: Int, total: Int) {
+        val textConstructorForRest = getString(R.string.days_left)
+        binding.restDaysInFragmentDays.text = textConstructorForRest
+        binding.countRestFay.text = restDays.toString()
+        binding.progressBarInFragmentDays.progress = total - restDays
+    }
+
 
     private fun fillExerciseList(dayModel: DayModel) {
         val temporaryList = ArrayList<ExerciseModel>()
@@ -60,7 +96,8 @@ class DaysFragment : Fragment(), DayAdapter.Listener {
                 ExerciseModel(
                     exercisesArray[0],
                     exercisesArray[1],
-                    exercisesArray[2]
+                    exercisesArray[2],
+                    false
                 )
             )
         }
@@ -74,6 +111,7 @@ class DaysFragment : Fragment(), DayAdapter.Listener {
 
     override fun onClick(dayModel: DayModel) {
         fillExerciseList(dayModel)
+        model.currentDay = dayModel.dayNumber
         FragmentManager.setFragment(
             ExercisesListFragment.newInstance(),
             activity as AppCompatActivity

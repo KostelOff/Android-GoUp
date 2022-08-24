@@ -21,6 +21,7 @@ class ExercisesAdapter() :
 
             binding.titleExercisesInExercisesListItem.text = exerciseModel.name
             binding.counterInExercisesListItem.text = exerciseModel.time
+            binding.checkBoxInExercisesListItem.isChecked = exerciseModel.isDone
             binding.imageInExercisesListItem.setImageDrawable(
                 GifDrawable(
                     binding.root.context.assets,

@@ -27,8 +27,8 @@ class DayAdapter(var listener: Listener) :
                     dayModel.exercises.split(",").size.toString()
 
             binding.counterInDaysListItem.text = counterExercise
-
-            itemView.setOnClickListener { listener.onClick(dayModel) }
+            binding.checkBoxDaysListItem.isChecked = dayModel.isDone
+            itemView.setOnClickListener { listener.onClick(dayModel.copy(dayNumber = adapterPosition + 1)) }
         }
     }
 
