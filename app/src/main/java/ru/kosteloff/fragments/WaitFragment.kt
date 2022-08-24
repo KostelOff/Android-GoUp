@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import ru.kosteloff.R
 import ru.kosteloff.databinding.FragmentWaitBinding
+import ru.kosteloff.utils.FragmentManager
 import ru.kosteloff.utils.TimeUtils
 
 const val COUNT_DOWN_TIME = 6_000L
@@ -16,6 +19,7 @@ class WaitFragment : Fragment() {
 
     lateinit var timer: CountDownTimer
     lateinit var binding: FragmentWaitBinding
+    private var actionBar: ActionBar? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +33,8 @@ class WaitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.progressBar.max = COUNT_DOWN_TIME.toInt()
         startTimer()
+        actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = getString(R.string.get_ready)
     }
 
     private fun startTimer() {
@@ -39,7 +45,10 @@ class WaitFragment : Fragment() {
             }
 
             override fun onFinish() {
-                TODO("Not yet implemented")
+                FragmentManager.setFragment(
+                    ExerciseOneFragment.newInstance(),
+                    activity as AppCompatActivity
+                )
             }
         }.start()
     }
