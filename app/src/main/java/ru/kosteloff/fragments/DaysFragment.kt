@@ -12,6 +12,7 @@ import ru.kosteloff.adapters.DayAdapter
 import ru.kosteloff.data.DayModel
 import ru.kosteloff.data.ExerciseModel
 import ru.kosteloff.databinding.FragmentDaysBinding
+import ru.kosteloff.utils.DialogManager
 import ru.kosteloff.utils.FragmentManager
 import ru.kosteloff.utils.MainViewModel
 
@@ -48,8 +49,16 @@ class DaysFragment : Fragment(), DayAdapter.Listener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_reset) {
-            model.pref?.edit()?.clear()?.apply()
-            dayAdapter.submitList(forEachDaysExercises())
+            DialogManager.showDialog(
+                activity as AppCompatActivity,
+                R.string.message_attention_total,
+                object : DialogManager.Listener {
+                    override fun onclick() {
+                        model.pref?.edit()?.clear()?.apply()
+                        dayAdapter.submitList(forEachDaysExercises())
+                    }
+                }
+            )
         }
         return super.onOptionsItemSelected(item)
     }
@@ -110,11 +119,29 @@ class DaysFragment : Fragment(), DayAdapter.Listener {
     }
 
     override fun onClick(dayModel: DayModel) {
-        fillExerciseList(dayModel)
-        model.currentDay = dayModel.dayNumber
-        FragmentManager.setFragment(
-            ExercisesListFragment.newInstance(),
-            activity as AppCompatActivity
-        )
+        if (!dayModel.isDone) {
+            fillExerciseList(dayModel)
+            model.currentDay = dayModel.dayNumber
+            FragmentManager.setFragment(
+                ExercisesListFragment.newInstance(),
+                activity as AppCompatActivity
+            )
+        } else {
+
+            DialogManager.showDialog(
+                activity as AppCompatActivity,
+                R.string.message_attention_day,
+                object : DialogManager.Listener {
+                    override fun onclick() {
+                        model.prefSave(dayModel.dayNumber.toString(), 0)
+                        dayAdapter.submitList(forEachDaysExercises())
+                        FragmentManager.setFragment(
+                            ExercisesListFragment.newInstance(),
+                            activity as AppCompatActivity
+                        )
+                    }
+                }
+            )
+        }
     }
 }

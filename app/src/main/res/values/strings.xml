@@ -9,8 +9,13 @@
     <string name="get_ready">Get ready</string>
     <string name="schedule">Schedule</string>
     <string name="next">NEXT</string>
+    <string name="cancel">Cancel</string>
+    <string name="message_attention_total">Do you really want to reset all progress?</string>
+    <string name="message_attention_day">The progress of this day has already been credited.\nWould you like to reset the progress of this day and go through it again?</string>
+
     <string name="days_left">DAYS LEFT: </string>
     <string name="well_done">Отлично сработано!</string>
     <string name="reset">Reset progress</string>
     <string name="the_exercises_are_completed">The exercises\nare\ncompleted</string>
+    <string name="attention">Attention!</string>
 </resources>

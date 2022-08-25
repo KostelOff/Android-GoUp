@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="exercise">
-        <item>Разминка|300|razminka.gif</item>                  <!-- 0 -->
-        <item>Плечи и нагтели|x11|na_plechi_ganteli.gif</item>  <!-- 1 -->
-        <item>Отжимания от пола|x20|otzimaniya.gif</item>       <!-- 2 -->
-        <item>Пресс|x30|press.gif</item>                        <!-- 3 -->
-        <item>Присяд и штанга|x10|prisad_so_stangoi.gif</item>  <!-- 4 -->
-        <item>Жим лежа и штанга|x10|zhim_lega.gif</item>        <!-- 5 -->
-        <item>Планка|30|planka.gif</item>                       <!-- 6 -->
-        <item>Планка|30|planka.gif</item>                       <!-- 7 -->
-        <item>Бицепс и штанга|x10|na_biceps_stanga.gif</item>   <!-- 8 -->
+        <item>Warm-up|300|razminka.gif</item>                                             <!-- 0 -->
+        <item>Bench press|x10x4|zhim_lega.gif</item>                                      <!-- 1 -->
+        <item>Dumbbell bench press|x10x3|zhim_na_skame_gantely.gif</item>                         <!-- 2 -->
+        <item>Lifting the barbell on the biceps|x11x3|podem_shtangi_na_biceps.gif</item>    <!-- 3 -->
+        <item>Lifting dumbbells on biceps|x10x4|podem_ganteley_na_biceps.gif</item>         <!-- 4 -->
+
+        <item>Traction of the block with a wide grip|x8x4|taga_verhnego_block.gif</item>   <!-- 5 -->
+        <item>Block thrust with a narrow grip|x8x4|taga_nizhnego_block.gif</item>           <!-- 6 -->
+        <item>Dumbbell thrust in a tilt with a stop|x10x4|taga_ganteley_v_naklone.gif</item> <!-- 7 -->
+        <item>French bench press|x9x3|france_zhim.gif</item>                               <!-- 8 -->
+
+        <item>Barbell Squats|x10x3|prisad_so_shtangoi.gif</item>                            <!-- 9 -->
+        <item>Leg press|x10x3|zhim_nogami.gif</item>                            <!-- 10 -->
+        <item>Leg extension in the simulator|x10x3|razgibanie_nog.gif</item>                <!-- 11 -->
+        <item>Swing with dumbbells to the sides|x10x3|mahi_ganteley_v_storony.gif</item>   <!-- 12 -->
+        <item>Running|180|beg.gif</item>                                                 <!-- 13 -->
+        <item>Press|300|press_1.gif</item>                                        <!-- 14 -->
+        <item>Press|300|press_2.gif</item>                                  <!-- 15 -->
+        <item>Deadlift|x10x3|stanovaya_taga.gif</item>                           <!-- 16 -->
+
     </string-array>
     <string-array name="day_exercise">
-        <item>0,1,2,3</item>   <!-- 1 день-->
-        <item>0,4,5,6</item>   <!-- 2 день-->
-        <item>0,7,8</item>     <!-- 3 день-->
-        <item>0,1,2,3</item>   <!-- 4 день-->
-        <item>0,4,5,6</item>   <!-- 5 день-->
-        <item>0,7,8</item>     <!-- 6 день-->
-        <item>0,1,2,3</item>   <!-- 7 день-->
-        <item>0,4,5,6</item>   <!-- 8 день-->
-        <item>0,7,8</item>     <!-- 9 день-->
-        <item>0,1,2,3</item>   <!-- 10 день-->
-        <item>0,4,5,6</item>   <!-- 11 день-->
-        <item>0,7,8</item>     <!-- 12 день-->
-        <item>0,1,2,3</item>   <!-- 13 день-->
-        <item>0,4,5,6</item>   <!-- 14 день-->
+        <item>13,0,1,2,3,4,14</item>   <!-- 1 день-->
+        <item>13,0,16,5,6,7,8,15</item>   <!-- 2 день-->
+        <item>13,0,9,10,11,12,14</item>     <!-- 3 день-->
+
+        <item>13,0,1,2,3,4,15</item>    <!-- 4 день-->
+        <item>13,0,16,5,6,7,8,15</item>   <!-- 5 день-->
+        <item>13,0,9,10,11,12,15</item>    <!-- 6 день-->
+
+        <item>13,0,1,2,3,4,14</item>    <!-- 7 день-->
+        <item>13,0,16,5,6,7,8,15</item>   <!-- 8 день-->
+        <item>13,0,9,10,11,12,14</item>     <!-- 9 день-->
+
+        <item>13,0,1,2,3,4,15</item>   <!-- 10 день-->
+        <item>13,0,16,5,6,7,8,15</item>  <!-- 11 день-->
+        <item>13,0,9,10,11,12,15</item>     <!-- 12 день-->
     </string-array>
 </resources>

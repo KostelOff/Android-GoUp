@@ -11,7 +11,7 @@
         android:id="@+id/button_finish"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black_light_70"
+        android:backgroundTint="@color/black"
         android:fontFamily="@font/black_ops_one"
         android:text="@string/next"
         android:textColor="@color/red"
